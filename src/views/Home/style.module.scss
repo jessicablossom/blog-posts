@@ -1,6 +1,9 @@
-@import './../../styles/mixins.scss'; 
+@import './../../styles/mixins.scss';
 
 .container {
-    @include main-container;
-    margin-top: 50px;
+  @include main-container;
+}
+
+.mainTitle {
+  @include title;
 }

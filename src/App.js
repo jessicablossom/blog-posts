@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import AppRoutes from './Routes';
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar/Navbar';
 
 const App = () => {
   return (
@@ -11,7 +11,6 @@ const App = () => {
           <Navbar />
         </header>
         <AppRoutes />
-
         <footer>
           <p>&copy; 2023 by Jess</p>
         </footer>
