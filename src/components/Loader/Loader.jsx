@@ -1,10 +1,10 @@
 import React from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
-import classes from './styles.module.scss';
+import './index.css';
 
 const Loader = () => {
   return (
-    <div className={classes.loaderContainer}>
+    <div className="loader-container">
       <CircularProgress size={100} thickness={2} color="error" />
     </div>
   );

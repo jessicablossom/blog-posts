@@ -4,13 +4,16 @@ import {
   Dialog,
   Stack,
   DialogContent,
-  DialogContentText,
   DialogTitle,
   TextField,
 } from '@mui/material';
-import classes from './styles.module.scss';
+import { styled } from '@mui/material/styles';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+import './index.css';
 
-const BlogModal = ({ open, handleClose, addPost }) => {
+const AddPostForm = ({ open, handleClose, addPost }) => {
   const [formData, setFormData] = useState({
     title: '',
     author: '',
@@ -40,14 +43,34 @@ const BlogModal = ({ open, handleClose, addPost }) => {
     }
   };
 
+  const VisuallyHiddenInput = styled('input')({
+    clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
+    height: 1,
+    overflow: 'hidden',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    whiteSpace: 'nowrap',
+    width: 1,
+  });
+
   return (
-    <Dialog open={open} onClose={handleClose}>
-      <DialogTitle>Nuevo Blog Post</DialogTitle>
-      <DialogContent>
-        <DialogContentText>
-          Complete los campos y haga clic en "Agregar" para añadir un nuevo
-          post.
-        </DialogContentText>
+    <Dialog className="dialog-form" open={open} onClose={handleClose}>
+      <DialogTitle>Nuevo Articulo</DialogTitle>
+      <IconButton
+        aria-label="close"
+        onClick={handleClose}
+        sx={{
+          position: 'absolute',
+          right: 8,
+          top: 8,
+          color: (theme) => theme.palette.grey[500],
+        }}
+      >
+        <CloseIcon />
+      </IconButton>
+      <DialogContent className="add-post-form">
         <TextField
           name="title"
           label="Título"
@@ -77,11 +100,23 @@ const BlogModal = ({ open, handleClose, addPost }) => {
           rows={4}
           margin="normal"
         />
-        <input type="file" accept="image/*" onChange={handleImageChange} />
-      </DialogContent>
-      <Stack className={classes.buttonContainer} direction="row" spacing={2}>
         <Button
-          className={classes.buttonLink}
+          component="label"
+          className="button-upload"
+          variant="contained"
+          startIcon={<CloudUploadIcon />}
+        >
+          Cargar Imagen
+          <VisuallyHiddenInput
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
+          />
+        </Button>
+      </DialogContent>
+      <Stack className="button-container" direction="row" spacing={2}>
+        <Button
+          className="button-link"
           onClick={handleClose}
           color="primary"
           variant="text"
@@ -89,7 +124,7 @@ const BlogModal = ({ open, handleClose, addPost }) => {
           Cancelar
         </Button>
         <Button
-          className={classes.buttonContained}
+          className="button-contained"
           onClick={handleSubmit}
           color="primary"
           variant="contained"
@@ -101,4 +136,4 @@ const BlogModal = ({ open, handleClose, addPost }) => {
   );
 };
 
-export default BlogModal;
+export default AddPostForm;
