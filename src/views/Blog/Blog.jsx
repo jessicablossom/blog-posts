@@ -48,8 +48,8 @@ const Blog = () => {
           </Typography>
         </Stack>
       )}
-      {open && (
-        <AddPostForm open={open} handleClose={handleClose} addPost={addPost} />
+      {open && posts && (
+        <AddPostForm open={open} handleClose={handleClose} posts={posts} />
       )}
     </Container>
   );

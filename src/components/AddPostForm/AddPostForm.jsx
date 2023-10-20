@@ -6,14 +6,22 @@ import {
   DialogContent,
   DialogTitle,
   TextField,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import usePosts from './../../hooks/useBlogPosts';
+
 import './index.css';
 
-const AddPostForm = ({ open, handleClose, addPost }) => {
+const AddPostForm = ({ open, handleClose, posts }) => {
+  const { addPost } = usePosts();
+
   const [formData, setFormData] = useState({
     title: '',
     author: '',
@@ -76,19 +84,39 @@ const AddPostForm = ({ open, handleClose, addPost }) => {
           label="Título"
           value={formData.title}
           onChange={handleInputChange}
+          variant="filled"
           required
           fullWidth
           margin="normal"
         />
-        <TextField
-          name="author"
-          label="Autor"
-          value={formData.author}
-          onChange={handleInputChange}
-          required
-          fullWidth
-          margin="normal"
-        />
+        <FormControl variant="filled" sx={{ width: '100% ' }}>
+          <InputLabel>Autor *</InputLabel>
+          <Select
+            name="author"
+            label="Autor"
+            value={formData.author}
+            onChange={handleInputChange}
+            required
+            fullWidth
+            variant="filled"
+            MenuProps={{
+              PaperProps: {
+                style: {
+                  maxHeight: 200,
+                },
+              },
+            }}
+          >
+            >
+            {posts
+              .sort((a, b) => a.author.localeCompare(b.author))
+              .map((post) => (
+                <MenuItem key={post.id} value={post.author}>
+                  {post.author}
+                </MenuItem>
+              ))}
+          </Select>
+        </FormControl>
         <TextField
           name="description"
           label="Descripción"
@@ -99,6 +127,7 @@ const AddPostForm = ({ open, handleClose, addPost }) => {
           multiline
           rows={4}
           margin="normal"
+          variant="filled"
         />
         <Button
           component="label"
