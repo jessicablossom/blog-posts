@@ -2,10 +2,11 @@ import React from 'react';
 import {
   Card,
   CardContent,
-  Container,
+  CardMedia,
   Typography,
   Dialog,
   DialogTitle,
+  Stack,
 } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
@@ -13,7 +14,7 @@ import './detailpost.css';
 
 const DetailPost = ({ post, open, handleClose }) => {
   return (
-    <Dialog className="modal" open={open} onClose={handleClose}>
+    <Dialog className="modal" open={open} onClose={handleClose} maxWidth="lg">
       <DialogTitle>{post.title}</DialogTitle>
       <IconButton
         aria-label="close"
@@ -28,20 +29,20 @@ const DetailPost = ({ post, open, handleClose }) => {
         <CloseIcon />
       </IconButton>
       <Card className="post-card-detail">
-        <CardContent>
-          <Container className="image-container" maxWidth="sm">
-            <img
-              className="post-images-detail"
-              src="https://picsum.photos/id/1084/536/354?grayscale"
-              alt="Post Image"
-            />
-          </Container>
+        <CardContent className="card-content">
+          <CardMedia
+            sx={{ height: 250 }}
+            image={post.image}
+            title={post.image}
+          />
           <Typography className="post-card-author" variant="h6">
             Por {post.author}
           </Typography>
-          <Typography variant="body2" color="textSecondary">
-            {post.description}
-          </Typography>
+          <Stack className="description-container">
+            <Typography variant="body2" color="textSecondary">
+              {post.description}
+            </Typography>
+          </Stack>
         </CardContent>
       </Card>
     </Dialog>

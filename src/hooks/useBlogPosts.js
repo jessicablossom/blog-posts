@@ -30,10 +30,10 @@ const usePosts = () => {
     }
   };
 
-  // agregamos un post al array de posts
-  const addPost = async (newBlogPost) => {
+  // agregamos un post al array de posts, pasamos como prop la imagen y la data de los inputs
+  const addPost = async (data) => {
     try {
-      const response = await axios.post(ENDPOINT_URL, newBlogPost);
+      const response = await axios.post(ENDPOINT_URL, data);
       const updatedPosts = [response.data, ...posts];
       const sortedPosts = updatedPosts.sort(
         (a, b) => b.createdAt - a.createdAt

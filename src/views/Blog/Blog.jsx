@@ -7,7 +7,7 @@ import AddPostForm from '../../components/AddPostForm/AddPostForm';
 import Loader from '../../components/Loader/Loader';
 
 const Blog = () => {
-  const { loading, posts, getPosts, addPost } = usePosts();
+  const { loading, posts, getPosts } = usePosts();
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -48,9 +48,7 @@ const Blog = () => {
           </Typography>
         </Stack>
       )}
-      {open && posts && (
-        <AddPostForm open={open} handleClose={handleClose} posts={posts} />
-      )}
+      {open && posts && <AddPostForm handleClose={handleClose} posts={posts} />}
     </Container>
   );
 };

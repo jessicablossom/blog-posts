@@ -1,3 +1,10 @@
+div.modal {
+  overflow: hidden;
+  max-height: unset;
+  width: 900px;
+  margin: auto;
+}
+
 div.button-container {
   display: flex;
   align-items: center;
@@ -7,4 +14,17 @@ div.button-container {
 
 label.button-upload {
   width: 185px;
+}
+
+.form-input {
+  color: red;
+  border: 1px solid red;
+}
+
+.Mui-focused .MuiInputLabel-root {
+  color: var(--color-dark-grey);
+}
+
+.MuiFilledInput-root:after {
+  border-bottom-color: var(--color-dark-grey);
 }

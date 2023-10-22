@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, CardMedia, Typography, Button, Container } from '@mui/material';
+import { Card, CardMedia, Typography, Button } from '@mui/material';
 import DetailPost from '../DetailPostModal/DetailPostModal';
 import './blogcard.css';
 
@@ -22,11 +22,7 @@ const BlogCard = ({ post }) => {
       <Typography className="post-card-author" variant="h6">
         {post.author}
       </Typography>
-      <CardMedia
-        sx={{ height: 140 }}
-        image="https://mui.com/static/images/cards/contemplative-reptile.jpg"
-        title="green iguana"
-      />
+      <CardMedia sx={{ height: 140 }} image={post.image} title={post.image} />
       <Typography variant="body2" color="textSecondary">
         {displayDescription}...
       </Typography>
