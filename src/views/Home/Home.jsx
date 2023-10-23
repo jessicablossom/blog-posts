@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Typography } from '@mui/material';
 import './home.css';
+import Login from '../../components/Login/Login';
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
       <Typography className="main-title" variant="h2">
         Acceso
       </Typography>
+      <Login />
     </Container>
   );
 };

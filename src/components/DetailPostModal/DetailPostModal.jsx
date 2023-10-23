@@ -8,11 +8,20 @@ import {
   DialogTitle,
   Stack,
 } from '@mui/material';
-import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
+import usePosts from './../../hooks/useBlogPosts';
 import './detailpost.css';
 
 const DetailPost = ({ post, open, handleClose }) => {
+  const { deletePost, getPosts } = usePosts();
+
+  const handleDelete = async () => {
+    await deletePost(post.id);
+    handleClose();
+  };
+
   return (
     <Dialog className="modal" open={open} onClose={handleClose} maxWidth="lg">
       <DialogTitle>{post.title}</DialogTitle>
@@ -39,6 +48,19 @@ const DetailPost = ({ post, open, handleClose }) => {
             Por {post.author}
           </Typography>
           <Stack className="description-container">
+            <Stack>
+              <IconButton
+                onClick={handleDelete}
+                sx={{
+                  position: 'absolute',
+                  right: 48,
+                  top: 8,
+                  color: (theme) => theme.palette.error.main,
+                }}
+              >
+                <DeleteIcon />
+              </IconButton>
+            </Stack>
             <Typography variant="body2" color="textSecondary">
               {post.description}
             </Typography>
