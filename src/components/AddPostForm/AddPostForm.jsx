@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Button,
   Dialog,
@@ -17,18 +17,13 @@ import CloseIcon from '@mui/icons-material/Close';
 import usePosts from './../../hooks/useBlogPosts';
 import useImageUpload from '../../hooks/useImageUpload';
 
-import './index.css';
+import './addpostform.css';
 
-const AddPostForm = ({ handleClose, posts }) => {
-  const { addPost, getPosts } = usePosts();
+const AddPostForm = ({ handleClose, initialData, postId, posts }) => {
+  const { addPost, getPosts, updatePost } = usePosts();
   const { uploadImages } = useImageUpload();
-
-  const [formData, setFormData] = useState({
-    title: '',
-    author: '',
-    description: '',
-    image: null,
-  });
+  const [formData, setFormData] = useState({});
+  const title = postId ? 'Editar articulo' : 'Nuevo Articulo';
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -37,6 +32,7 @@ const AddPostForm = ({ handleClose, posts }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     const file = event.target['input-upload'].files[0];
     try {
       const imageUrl = await uploadImages(file);
@@ -46,19 +42,36 @@ const AddPostForm = ({ handleClose, posts }) => {
         description: formData.description,
         image: imageUrl,
       };
-      await addPost(data);
-      await getPosts();
+      if (postId) {
+        await updatePost(postId, data);
+      } else {
+        await addPost(data);
+      }
+      getPosts();
       handleClose();
     } catch (error) {
       console.log(error);
     }
   };
 
-  const authorsList = Array.from(new Set(posts.map((post) => post.author)));
+  const authorsList = Array.from(
+    new Set(posts && posts.map((post) => post.author))
+  );
+
+  useEffect(() => {
+    if (initialData) {
+      setFormData({
+        title: initialData.title || '',
+        author: initialData.author || '',
+        description: initialData.description || '',
+        image: initialData.image || null,
+      });
+    }
+  }, [initialData]);
 
   return (
     <Dialog className="modal" open={true} onClose={handleClose} maxWidth="lg">
-      <DialogTitle>Nuevo Articulo</DialogTitle>
+      <DialogTitle>{title}</DialogTitle>
       <IconButton
         aria-label="close"
         onClick={handleClose}
@@ -85,7 +98,22 @@ const AddPostForm = ({ handleClose, posts }) => {
               margin="normal"
               color="success"
             />
-            <FormControl variant="filled" sx={{ width: '100% ' }}>
+            <TextField
+              name="author"
+              label="Autor"
+              value={formData.author}
+              onChange={handleInputChange}
+              variant="filled"
+              required
+              fullWidth
+              margin="normal"
+              color="success"
+            />
+            {/* 
+			El nombre del autor lo habia pensado como un combo, pero no logre que tome el initial value
+			dejo el codigo aqui para iterarlo eventualmente 
+
+			<FormControl variant="filled" sx={{ width: '100% ' }}>
               <InputLabel color="success">Autor *</InputLabel>
               <Select
                 color="success"
@@ -110,8 +138,7 @@ const AddPostForm = ({ handleClose, posts }) => {
                   </MenuItem>
                 ))}
               </Select>
-            </FormControl>
-
+            </FormControl> */}
             <TextField
               color="success"
               name="description"
@@ -138,7 +165,6 @@ const AddPostForm = ({ handleClose, posts }) => {
               <Button
                 className="button-link"
                 onClick={handleClose}
-                color="primary"
                 variant="text"
               >
                 Cancelar
@@ -146,10 +172,9 @@ const AddPostForm = ({ handleClose, posts }) => {
               <Button
                 type="submit"
                 className="button-contained"
-                color="primary"
                 variant="contained"
               >
-                Agregar
+                Guardar
               </Button>
             </Stack>
           </FormControl>

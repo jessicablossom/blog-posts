@@ -13,8 +13,12 @@ const usePosts = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const getPosts = () => {
+    return posts;
+  };
+
   // obtenemos los posts de la api y populando un useState con los valores ya ordenados por fecha de creacion
-  const getPosts = async () => {
+  const fetchPosts = async () => {
     try {
       setLoading(true);
       const response = await axios.get(ENDPOINT_URL);
@@ -23,8 +27,10 @@ const usePosts = () => {
       );
       setPosts(sortedPosts);
       setError(null);
+      return sortedPosts;
     } catch (err) {
       setError(err);
+      return null;
     } finally {
       setLoading(false);
     }
@@ -34,11 +40,34 @@ const usePosts = () => {
   const addPost = async (data) => {
     try {
       const response = await axios.post(ENDPOINT_URL, data);
-      const updatedPosts = [response.data, ...posts];
+      const updatedPosts = [response.data, ...getPosts()];
       const sortedPosts = updatedPosts.sort(
         (a, b) => b.createdAt - a.createdAt
       );
       setPosts(sortedPosts);
+      setError(null);
+    } catch (err) {
+      setError(err);
+    }
+  };
+
+  // tomamos el id para modificar el post y hacer el PUT a la api
+  const updatePost = async (id, data) => {
+    try {
+      await axios.put(`${ENDPOINT_URL}/${id}`, data);
+      setPosts((prevPosts) => {
+        const updatedPosts = prevPosts.map((post) => {
+          if (post.id === id) {
+            return { ...post, ...data };
+          }
+          return post;
+        });
+        const sortedPosts = updatedPosts.sort(
+          (a, b) => b.createdAt - a.createdAt
+        );
+        return sortedPosts;
+      });
+
       setError(null);
     } catch (err) {
       setError(err);
@@ -57,11 +86,12 @@ const usePosts = () => {
   };
 
   return {
-    posts,
     loading,
     error,
     getPosts,
+    fetchPosts,
     addPost,
+    updatePost,
     deletePost,
   };
 };

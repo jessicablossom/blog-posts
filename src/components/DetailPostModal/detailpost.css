@@ -1,14 +1,23 @@
 div.modal {
   overflow: hidden;
   max-height: unset;
-  width: 900px;
   margin: auto;
+}
+
+h2.detail-title {
+  width: 80%;
+}
+
+div.post-card-detail {
+  width: 600px;
+  height: 100%;
 }
 
 div.card-content {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding: 20px;
 }
 
 .image-container {
@@ -28,4 +37,35 @@ img.post-images-detail {
   max-height: 200px;
   overflow-y: scroll;
   scroll-behavior: smooth;
+}
+
+div.confirm-message {
+  margin: auto;
+  width: 400px;
+}
+
+div.MuiDialogActions-root {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.small {
+  max-width: 120px;
+}
+
+@media (min-width: 420px) and (max-width: 768px) {
+  h2.detail-title {
+    width: 60%;
+  }
+
+  div.post-card-detail {
+    width: 450px;
+    height: 100%;
+  }
+
+  div.MuiPaper-root {
+    overflow: hidden;
+  }
 }

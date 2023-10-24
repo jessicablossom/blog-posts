@@ -1,17 +1,17 @@
-import { useState } from 'react';
 import axios from 'axios';
+
+const ENDPOINT_URL =
+  'https://65305bc56c756603295e8df4.mockapi.io/api/v1/users?username=';
 
 const useGetUser = () => {
   const getUser = async (username) => {
-    const response = await axios.get(
-      `https://65305bc56c756603295e8df4.mockapi.io/api/v1/users?username=${username}`
-    );
+    const response = await axios.get(`${ENDPOINT_URL}${username}`);
     return response.data[0];
   };
 
-  // a los efectos practicos de un ejercicio de codigo, la respuesta del endpoint nos devuelve el usuario y password,
-  // pero esto deberia quedar encriptando la informacion sensible del usuario como buena practica utilizando un token y un hash
-  // validar el usuario y contraseña
+  // A los efectos prácticos de un ejercicio de código, la respuesta del endpoint nos devuelve el usuario y contraseña,
+  // pero esto debería quedar encriptando la información sensible del usuario como buena práctica utilizando un token y un hash.
+  // Validar el usuario y contraseña.
 
   return { getUser };
 };

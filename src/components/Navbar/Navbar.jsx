@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { Link, Stack, Button } from '@mui/material';
 import useCookie from './../../hooks/useCookie';
-import './index.css';
+import './navbar.css';
 
 const applySelected = (currentRoute, href) =>
   currentRoute === href ? 'selected' : 'nav-item ';

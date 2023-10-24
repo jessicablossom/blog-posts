@@ -1,6 +1,6 @@
 import React from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
-import './index.css';
+import './loader.css';
 
 const Loader = () => {
   return (

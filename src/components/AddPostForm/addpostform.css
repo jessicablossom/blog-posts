@@ -1,15 +1,17 @@
+div.MuiDialog-paper {
+  width: 600px;
+}
+
 div.modal {
   overflow: hidden;
   max-height: unset;
-  width: 900px;
   margin: auto;
 }
 
 div.button-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  padding: 25px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding-top: 15px;
 }
 
 label.button-upload {
@@ -27,4 +29,10 @@ label.button-upload {
 
 .MuiFilledInput-root:after {
   border-bottom-color: var(--color-dark-grey);
+}
+
+@media (min-width: 420px) and (max-width: 768px) {
+  div.MuiDialog-paper {
+    width: 450px;
+  }
 }

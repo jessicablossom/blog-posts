@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Container, Typography, Stack } from '@mui/material';
-import './index.css';
 import usePosts from './../../hooks/useBlogPosts';
 import BlogPostList from '../../components/BlogList/BlogList';
 import AddPostForm from '../../components/AddPostForm/AddPostForm';
 import Loader from '../../components/Loader/Loader';
+import './Blog.css';
 
 const Blog = () => {
-  const { loading, posts, getPosts } = usePosts();
+  const { loading, posts, fetchPosts, getPosts } = usePosts();
   const [open, setOpen] = useState(false);
-
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -19,7 +18,7 @@ const Blog = () => {
   };
 
   useEffect(() => {
-    getPosts();
+    fetchPosts();
   }, []);
 
   return (
@@ -36,8 +35,8 @@ const Blog = () => {
       </Button>
       {loading ? (
         <Loader />
-      ) : posts.length > 0 ? (
-        <BlogPostList posts={posts} />
+      ) : getPosts().length > 0 ? (
+        <BlogPostList posts={getPosts()} />
       ) : (
         <Stack className="center-row">
           <Typography className="main-title" variant="h4">
@@ -48,7 +47,7 @@ const Blog = () => {
           </Typography>
         </Stack>
       )}
-      {open && posts && <AddPostForm handleClose={handleClose} posts={posts} />}
+      {open && <AddPostForm handleClose={handleClose} posts={getPosts()} />}
     </Container>
   );
 };

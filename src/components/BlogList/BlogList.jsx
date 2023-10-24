@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import BlogCard from '../BlogCard/BlogCard';
 import { Pagination } from '@mui/material';
-import './index.css';
+import './bloglist.css';
 
 const BlogPostList = ({ posts }) => {
   const postsPerPage = 5;
