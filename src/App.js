@@ -11,7 +11,7 @@ const App = () => {
           <Navbar />
         </header>
         <AppRoutes />
-        <footer>
+        <footer className="footer">
           <p>&copy; 2023 by Jess</p>
         </footer>
       </>

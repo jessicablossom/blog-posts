@@ -12,6 +12,15 @@ code {
     monospace;
 }
 
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-dark-grape);
+  font-size: var(--font-size-xs);
+  padding: 15px 0px;
+}
+
 /* defini estilos globales para los botones que me permite reutilizar las clases sin tener 
  que definirlas para cada componente o vista, con SASS lo haria con mixins */
 

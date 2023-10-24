@@ -54,3 +54,7 @@ a.selected {
   background-color: var(--color-primary);
   color: var(--color-light);
 }
+
+button.button-link {
+  align-self: center;
+}

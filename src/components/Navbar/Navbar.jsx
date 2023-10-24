@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { Link, Stack, Button } from '@mui/material';
+import useCookie from './../../hooks/useCookie';
 import './index.css';
 
 const applySelected = (currentRoute, href) =>
@@ -8,10 +9,7 @@ const applySelected = (currentRoute, href) =>
 
 const Navbar = () => {
   const location = useLocation();
-
-  const userIdCookie = document.cookie
-    .split('; ')
-    .find((row) => row.startsWith('userId='));
+  const userIdCookie = useCookie();
   const isLoggedIn = !!userIdCookie;
 
   const handleLogout = () => {
@@ -20,37 +18,32 @@ const Navbar = () => {
   };
 
   return (
-    <div className="nav-container">
-      <nav className="navbar">
-        <Stack className="row" direction="row" spacing={2}>
-          {!isLoggedIn && (
-            <Link
-              className={`${applySelected(location.pathname, '/home')}`}
-              href="/home"
-              underline="none"
-            >
-              Home
-            </Link>
-          )}
-          <Link
-            className={`${applySelected(location.pathname, '/blog')}`}
-            href="/blog"
-            underline="none"
-          >
-            Blog
-          </Link>
-          {isLoggedIn && (
-            <Button
-              className="button-link"
-              variant="text"
-              onClick={handleLogout}
-            >
-              Cerrar sesión
-            </Button>
-          )}
-        </Stack>
-      </nav>
-    </div>
+    <>
+      {isLoggedIn && (
+        <div className="nav-container">
+          <nav className="navbar">
+            <Stack className="row" direction="row" spacing={2}>
+              <Link
+                className={`${applySelected(location.pathname, '/blog')}`}
+                href="/blog"
+                underline="none"
+              >
+                Blog
+              </Link>
+              {isLoggedIn && (
+                <Button
+                  className="button-link"
+                  variant="text"
+                  onClick={handleLogout}
+                >
+                  Cerrar sesión
+                </Button>
+              )}
+            </Stack>
+          </nav>
+        </div>
+      )}
+    </>
   );
 };
 

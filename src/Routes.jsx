@@ -1,21 +1,22 @@
 import React from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import useCookie from './hooks/useCookie';
 import Home from './views/Home/Home';
 import Blog from './views/Blog/Blog';
 
-const RedirectHome = () => {
-  const navigate = useNavigate();
-  navigate('/home');
-  return null;
-};
+const AppRoutes = () => {
+  const userIdCookie = useCookie();
 
-const AppRoutes = () => (
-  <Routes>
-    <Route path="*" element={<RedirectHome />} />
-    <Route path="/" element={<Home />} />
-    <Route path="/home" element={<Home />} />
-    <Route path="/blog" element={<Blog />} />
-  </Routes>
-);
+  return (
+    <Routes>
+      <Route path="*" element={<Navigate to="/home" replace />} />
+      <Route path="/home" element={<Home />} />
+      <Route
+        path="/blog"
+        element={userIdCookie ? <Blog /> : <Navigate to="/home" replace />}
+      />
+    </Routes>
+  );
+};
 
 export default AppRoutes;

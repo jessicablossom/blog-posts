@@ -2,6 +2,7 @@ div.login-container {
   background-color: var(--color-light);
   padding: 25px;
   border-radius: 15px;
+  margin: 20px auto;
 }
 .form-login {
   display: flex;
