@@ -19,7 +19,7 @@ Se abre en [http://localhost:3000](http://localhost:3000) en tu navegador prefer
 
 ## Endpoints
 
-API de blog: https://633a23d9e02b9b64c60c9d72.mockapi.io/claim
+API de blog: https://65305bc56c756603295e8df4.mockapi.io/api/v1/blogposts
 
 API de usuarios: https://65305bc56c756603295e8df4.mockapi.io/api/v1/users
 
