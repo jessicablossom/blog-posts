@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# Blog con CRUD de posts
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Web app realizada con reactjs, componentes de material UI, dummy backend con mockapi & firebase para cloud storage de imagenes.
 
-## Available Scripts
+Instalacion inicial :
 
-In the project directory, you can run:
+### `npm install`
+
+El mismo va a instalar las dependencias necesarias como son Axios para endpoint request, material UI para componentes de layout, firebase para cloud image storage.
+
+## Correr el proyecto
+
+Para ejecutar de manera local :
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Corre la aplicacion en development mode.\
+Se abre en [http://localhost:3000](http://localhost:3000) en tu navegador preferido.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Endpoints
 
-### `npm test`
+API de blog: https://633a23d9e02b9b64c60c9d72.mockapi.io/claim
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+API de usuarios: https://65305bc56c756603295e8df4.mockapi.io/api/v1/users
 
-### `npm run build`
+## Usuario base
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+User: admin
+Password: 123455
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Mejoras a futuro
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Si bien el proyecto esta completamente funcional, podrian sumarse funcionalidades para mejorar la experiencia de usuario.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-   Agregar el nombre de la imagen al lado del boton adjuntar, una vez que finalizo la carga con un action que permita removerla.
+-   Posibilidad de edición de posts, sumando un badge de post editado
+-   Dar feedback al usuario mientras se procesa la informacion y se carga el post (un loader y un badge de reclamo enviado exitosamente)
+-   Creacion de distintos roles para definir permisos de edicion y borrado, creacion y solo lectura.
