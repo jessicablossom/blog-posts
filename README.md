@@ -2,7 +2,16 @@
 
 Web app realizada con reactjs, componentes de material UI, dummy backend con mockapi & firebase para cloud storage de imagenes.
 
+![00](https://github.com/jessicablossom/blog-posts/assets/11197367/dbb4f9f1-3302-4a85-ab65-d621b57d5aa8)
+![01](https://github.com/jessicablossom/blog-posts/assets/11197367/d612da18-6a33-48ae-b90a-7adf15355391)
+![02](https://github.com/jessicablossom/blog-posts/assets/11197367/b2ac5511-807e-45a2-b1fe-e88872369c51)
+![03](https://github.com/jessicablossom/blog-posts/assets/11197367/7ae92fec-7081-47a2-a9c1-376ee47bf36e)
+![04](https://github.com/jessicablossom/blog-posts/assets/11197367/c50aa4ed-1b5b-47e7-ac97-c9aaa59a6a83)
+![05](https://github.com/jessicablossom/blog-posts/assets/11197367/f029109f-b206-4d8e-9e86-b8075cc36ce9)
+
+
 Instalacion inicial :
+
 
 ### `npm install`
 
