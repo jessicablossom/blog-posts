@@ -35,7 +35,7 @@ API de usuarios: https://65305bc56c756603295e8df4.mockapi.io/api/v1/users
 ## Usuario base
 
 User: admin
-Password: 123455
+Password: 123456
 
 ## Mejoras a futuro
 
