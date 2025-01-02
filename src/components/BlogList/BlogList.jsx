@@ -23,7 +23,7 @@ const BlogPostList = ({ posts }) => {
 			{posts.length > postsPerPage && (
 				<Pagination
 					className='pagination'
-					color='error'
+					color='secondary'
 					count={Math.ceil(posts.length / postsPerPage)}
 					onChange={handlePageChange}
 					page={page}

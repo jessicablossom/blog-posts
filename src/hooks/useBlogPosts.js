@@ -43,6 +43,7 @@ const usePosts = () => {
 	const updatePost = async (id, data) => {
 		try {
 			await axios.put(`${ENDPOINT_URL}/${id}`, data);
+
 			setPosts((prevPosts) => {
 				const updatedPosts = prevPosts.map((post) => {
 					if (post.id === id) {
@@ -50,6 +51,7 @@ const usePosts = () => {
 					}
 					return post;
 				});
+
 				const sortedPosts = updatedPosts.sort((a, b) => b.createdAt - a.createdAt);
 				return sortedPosts;
 			});
@@ -63,7 +65,7 @@ const usePosts = () => {
 	const deletePost = async (id) => {
 		try {
 			await axios.delete(`${ENDPOINT_URL}/${id}`);
-			setPosts(posts.filter((post) => post.id !== id));
+			setPosts((prevPosts) => prevPosts.filter((post) => post.id !== id));
 			setError(null);
 		} catch (err) {
 			setError(err);

@@ -1,110 +1,113 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+		'Droid Sans', 'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 .footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-dark-grape);
-  font-size: var(--font-size-xs);
-  padding: 15px 0px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--color-dark-grape);
+	font-size: var(--font-size-xs);
+	padding: 15px 0px;
 }
 
 /* defini estilos globales para los botones que me permite reutilizar las clases sin tener 
  que definirlas para cada componente o vista, con SASS lo haria con mixins */
 
 h2.main-title {
-  color: var(--color-content-primary);
-  font-size: var(--font-size-xxxl);
-  font-weight: 600;
+	color: var(--color-content-primary);
+	font-size: var(--font-size-xxxl);
+	font-weight: 600;
 }
 
 button.button-link,
 button.button-contained,
 button.button-outlined,
-label.button-upload {
-  box-sizing: border-box;
-  border-radius: 1.5rem;
-  width: 155px;
-  font-weight: 400;
+label.button-upload,
+button.button-contained-login {
+	box-sizing: border-box;
+	border-radius: 1.5rem;
+	width: 155px;
+	font-weight: 400;
+	height: 40px;
 }
 
 button.button-outlined {
-  font-weight: 600;
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
-  background-color: var(--color-champagne-light);
+	font-weight: 600;
+	border: 1px solid var(--color-primary);
+	color: var(--color-primary);
+	background-color: var(--color-champagne-light);
 }
 
 button.button-outlined:hover {
-  box-sizing: border-box;
-  background-color: var(--color-primary);
-  color: var(--color-champagne-light);
-  border: 1px solid var(--color-primary);
+	box-sizing: border-box;
+	background-color: var(--color-primary);
+	color: var(--color-champagne-light);
+	border: 1px solid var(--color-primary);
 }
 
 button.button-link {
-  color: var(--color-primary);
+	color: var(--color-primary);
 }
 
 button.button-link:hover,
 button.button-link:active {
-  background-color: var(--color-light);
-  opacity: 80%;
+	background-color: var(--color-light);
+	opacity: 80%;
 }
 
-button.button-contained {
-  color: var(--color-light);
-  background-color: var(--color-primary);
+button.button-contained,
+button.button-contained-login {
+	color: var(--color-light);
+	background-color: var(--color-primary);
 }
 
 button.button-contained:hover,
-button.button-contained:active {
-  opacity: 80%;
-  background-color: var(--color-primary);
+button.button-contained:active,
+button.button-contained-login:hover,
+button.button-contained-login:active {
+	opacity: 80%;
+	background-color: var(--color-primary);
 }
 
 label.button-upload {
-  margin-top: 10px;
-  background-color: var(--color-primary);
+	margin: 20px;
+	background-color: var(--color-line);
 }
 
 label.button-upload:hover {
-  opacity: 80%;
-  background-color: var(--color-primary);
+	opacity: 70%;
+	background-color: var(--color-primary);
 }
 
 :root {
-  font-size: 16px;
-  --color-light: #fff;
-  --color-black: #0e0f0c;
-  --color-primary: #e74c3c;
-  --color-primary-dark: #c0392b;
-  --color-champagne-light: #f3e6e3;
-  --color-line: #d9cdd1;
-  --color-warm-gray: #73706c;
-  --color-dark-gray: #262524;
-  --color-dark-grape: #3c0122;
-  --color-content-primary: var(--color-dark-grape);
-  --color-content-secondary: var(--color-warm-gray);
-  --font-size-xxs: 0.75rem;
-  --font-size-xs: 0.875rem;
-  --font-size-s: 1rem;
-  --font-size-m: 1.125rem;
-  --font-size-l: 1.25rem;
-  --font-size-xl: 1.5rem;
-  --font-size-xxl: 1.75rem;
-  --font-size-xxxl: 3rem;
-  background-color: var(--color-champagne-light);
+	font-size: 16px;
+	--color-light: #fff;
+	--color-black: #0e0f0c;
+	--color-primary: #a55eea;
+	--color-primary-dark: #8854d0;
+	--color-champagne-light: #f4f2f7;
+	--color-line: #d9cdd1;
+	--color-warm-gray: #73706c;
+	--color-dark-gray: #262524;
+	--color-dark-grape: #5e3fa1;
+	--color-content-primary: var(--color-dark-grape);
+	--color-content-secondary: var(--color-warm-gray);
+	--font-size-xxs: 0.75rem;
+	--font-size-xs: 0.875rem;
+	--font-size-s: 1rem;
+	--font-size-m: 1.125rem;
+	--font-size-l: 1.25rem;
+	--font-size-xl: 1.5rem;
+	--font-size-xxl: 1.75rem;
+	--font-size-xxxl: 3rem;
+	background-color: var(--color-champagne-light);
 }

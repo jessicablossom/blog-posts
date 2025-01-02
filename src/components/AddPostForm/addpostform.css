@@ -1,38 +1,41 @@
 div.MuiDialog-paper {
-  width: 600px;
+	width: 600px;
 }
 
 div.modal {
-  overflow: hidden;
-  max-height: unset;
-  margin: auto;
+	overflow: hidden;
+	max-height: unset;
+	margin: auto;
 }
 
 div.button-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  padding-top: 15px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	padding-top: 15px;
 }
 
 label.button-upload {
-  width: 185px;
+	display: flex;
+	align-self: center;
+	width: 185px;
+	margin: 50px;
 }
 
 .form-input {
-  color: red;
-  border: 1px solid red;
+	color: violet;
+	border: 1px solid violet;
 }
 
 .Mui-focused .MuiInputLabel-root {
-  color: var(--color-dark-grey);
+	color: var(--color-dark-grey);
 }
 
 .MuiFilledInput-root:after {
-  border-bottom-color: var(--color-dark-grey);
+	border-bottom-color: var(--color-dark-grey);
 }
 
 @media (min-width: 420px) and (max-width: 768px) {
-  div.MuiDialog-paper {
-    width: 450px;
-  }
+	div.MuiDialog-paper {
+		width: 450px;
+	}
 }
