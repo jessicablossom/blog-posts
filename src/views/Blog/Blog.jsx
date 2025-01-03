@@ -28,7 +28,13 @@ const Blog = () => {
 				Blog
 			</Typography>
 
-			<Button id='add' size='medium' variant='contained' className='button-contained' onClick={handleClickOpen}>
+			<Button
+				id='create'
+				size='medium'
+				variant='contained'
+				className='button-contained'
+				onClick={handleClickOpen}
+			>
 				Agregar +
 			</Button>
 

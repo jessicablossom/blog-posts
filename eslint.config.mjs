@@ -18,4 +18,10 @@ export default [
 	},
 	pluginJs.configs.recommended,
 	pluginReact.configs.flat.recommended,
+	{
+		rules: {
+			'no-undef': 'off',
+			'no-unused-vars': 'off',
+		},
+	},
 ];
